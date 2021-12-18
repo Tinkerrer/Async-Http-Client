@@ -1,9 +1,9 @@
-// Copyright 2021 Your Name <your_email>
-
-#include <stdexcept>
+// Copyright 2021 Tinkerrer
 
 #include <example.hpp>
+#include <iostream>
 
 auto example() -> void {
-  throw std::runtime_error("not implemented");
+  std::cout << "example";
+  // throw std::runtime_error("not implemented");
 }

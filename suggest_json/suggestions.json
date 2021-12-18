@@ -1,0 +1,22 @@
+[
+  {
+    "id": "hel",
+    "name": "hello world",
+    "cost": 70
+  },
+  {
+    "id": "hel",
+    "name": "helm",
+    "cost": 200
+  },
+  {
+    "id": "hel",
+    "name": "hello, Arty",
+    "cost": 400
+  },
+  {
+    "id": "ru",
+    "name": "ruby",
+    "cost": 40
+  }   
+]

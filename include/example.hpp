@@ -1,8 +1,8 @@
-// Copyright 2021 Your Name <your_email>
+// Copyright 2021 Tinkerrer
 
 #ifndef INCLUDE_EXAMPLE_HPP_
 #define INCLUDE_EXAMPLE_HPP_
 
 auto example() -> void;
 
-#endif // INCLUDE_EXAMPLE_HPP_
+#endif  // INCLUDE_EXAMPLE_HPP_
