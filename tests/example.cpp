@@ -1,11 +1,9 @@
-// Copyright 2021 Your Name <your_email>
+// Copyright 2021 Tinkerrer
 
 #include <stdexcept>
 
 #include <gtest/gtest.h>
 
-#include <example.hpp>
-
 TEST(Example, EmptyTest) {
-    EXPECT_THROW(example(), std::runtime_error);
+    EXPECT_TRUE(true);
 }
