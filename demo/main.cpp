@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Copyright 2021 Tinkerrer
 #include <AsyncHttpServer.h>
 
@@ -22,3 +23,10 @@ int main(int argc, char* argv[]) {
     std::cerr << "exception: " << e.what() << "\n";
   }
 }
+=======
+#include <example.hpp>
+
+int main() {
+  example();
+}
+>>>>>>> 89c6fab... Initial commit

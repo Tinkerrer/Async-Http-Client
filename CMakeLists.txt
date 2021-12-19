@@ -8,16 +8,16 @@ option(BUILD_DOCS "Build documentation" OFF)
 option(BUILD_COVERAGE "Build code coverage" OFF)
 
 set(
-  HUNTER_CACHE_SERVERS
-  "https://github.com/bmstu-iu8-cpp-sem-3/hunter-cache"
-  CACHE STRING "Default cache server"
+        HUNTER_CACHE_SERVERS
+        "https://github.com/bmstu-iu8-cpp-sem-3/hunter-cache"
+        CACHE STRING "Default cache server"
 )
 
 include("cmake/HunterGate.cmake")
 
 HunterGate(
-  URL "https://github.com/cpp-pm/hunter/archive/v0.23.314.tar.gz"
-  SHA1 "95c47c92f68edb091b5d6d18924baabe02a6962a"
+        URL "https://github.com/cpp-pm/hunter/archive/v0.23.314.tar.gz"
+        SHA1 "95c47c92f68edb091b5d6d18924baabe02a6962a"
 )
 
 # TODO: rename project and delete this comment
@@ -38,32 +38,32 @@ hunter_add_package(nlohmann_json)
 find_package(nlohmann_json CONFIG REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC
-  # enum your files and delete this comment
-  ${CMAKE_CURRENT_SOURCE_DIR}/sources/AsyncHttpServer.cpp
+        # enum your files and delete this comment
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/AsyncHttpServer.cpp
         sources/Connection.cpp
-)
+        )
 
 add_executable(demo
-  ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
-)
+        ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
+        )
 
 if (Boost_FOUND)
   include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 endif()
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
-  "$<INSTALL_INTERFACE:include>"
-)
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+        "$<INSTALL_INTERFACE:include>"
+        )
 
 target_link_libraries(demo ${PROJECT_NAME} Beast::Beast ${Boost_ASIO_LIBRARY} #${Boost_LIBRARIES}
         nlohmann_json::nlohmann_json Boost::filesystem Boost::thread Boost::system)
 
 if(BUILD_TESTS)
   add_executable(tests
-    # TODO: enum your files and delete this comment
-    ${CMAKE_CURRENT_SOURCE_DIR}/tests/example.cpp
-  )
+          # TODO: enum your files and delete this comment
+          ${CMAKE_CURRENT_SOURCE_DIR}/tests/example.cpp
+          )
   target_link_libraries(tests ${PROJECT_NAME} GTest::gtest_main)
   enable_testing()
   add_test(NAME unit_tests COMMAND tests)
@@ -93,16 +93,16 @@ endif()
 include(CPackConfig.cmake)
 
 install(TARGETS ${PROJECT_NAME} demo
-  EXPORT "${PROJECT_NAME}-targets"
-  RUNTIME DESTINATION bin
-  ARCHIVE DESTINATION lib
-  LIBRARY DESTINATION lib
-  INCLUDES DESTINATION include
-)
+        EXPORT "${PROJECT_NAME}-targets"
+        RUNTIME DESTINATION bin
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        INCLUDES DESTINATION include
+        )
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
 
 install(EXPORT "${PROJECT_NAME}-targets"
-  NAMESPACE "${PROJECT_NAME}::"
-  DESTINATION "lib/cmake"
-)
+        NAMESPACE "${PROJECT_NAME}::"
+        DESTINATION "lib/cmake"
+        )
