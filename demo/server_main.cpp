@@ -1,11 +1,12 @@
-<<<<<<< HEAD
 // Copyright 2021 Tinkerrer
+
 #include <AsyncHttpServer.h>
 
 int main(int argc, char* argv[]) {
   try {
     // Check command line arguments.
     // ./demo <address> <port>
+
     // command for making request from terminal:
     // curl -X POST http://localhost:5050/v1/api -H "Content-Type:
     // application/json" -d {\"input\":\"hel\"}
@@ -23,10 +24,3 @@ int main(int argc, char* argv[]) {
     std::cerr << "exception: " << e.what() << "\n";
   }
 }
-=======
-#include <example.hpp>
-
-int main() {
-  example();
-}
->>>>>>> 89c6fab... Initial commit

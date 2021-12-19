@@ -41,10 +41,15 @@ add_library(${PROJECT_NAME} STATIC
         # enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/AsyncHttpServer.cpp
         sources/Connection.cpp
+        sources/AsyncHttpClient.cpp
         )
 
-add_executable(demo
-        ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
+add_executable(server_demo
+        ${CMAKE_CURRENT_SOURCE_DIR}/demo/server_main.cpp
+        )
+
+add_executable(client_demo
+        ${CMAKE_CURRENT_SOURCE_DIR}/demo/client_main.cpp
         )
 
 if (Boost_FOUND)
@@ -56,7 +61,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         "$<INSTALL_INTERFACE:include>"
         )
 
-target_link_libraries(demo ${PROJECT_NAME} Beast::Beast ${Boost_ASIO_LIBRARY} #${Boost_LIBRARIES}
+target_link_libraries(server_demo ${PROJECT_NAME} Beast::Beast ${Boost_ASIO_LIBRARY} #${Boost_LIBRARIES}
+        nlohmann_json::nlohmann_json Boost::filesystem Boost::thread Boost::system)
+
+target_link_libraries(client_demo ${PROJECT_NAME} Beast::Beast ${Boost_ASIO_LIBRARY} #${Boost_LIBRARIES}
         nlohmann_json::nlohmann_json Boost::filesystem Boost::thread Boost::system)
 
 if(BUILD_TESTS)
@@ -92,7 +100,7 @@ endif()
 
 include(CPackConfig.cmake)
 
-install(TARGETS ${PROJECT_NAME} demo
+install(TARGETS ${PROJECT_NAME} server_demo client_demo
         EXPORT "${PROJECT_NAME}-targets"
         RUNTIME DESTINATION bin
         ARCHIVE DESTINATION lib
